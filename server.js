@@ -19,6 +19,10 @@ const server = fastify();
 // const database = new DatabaseMemory();
 const database = new DatabasePostgres();
 
+server.get('/', () => {
+    return 'Te amo Brenda <3'
+})
+
 server.get('/videos', async (request, reply) => {
     const { search } = request.query;
 
@@ -60,5 +64,6 @@ server.delete('/videos/:id', async (request, reply) => {
 })
 
 server.listen({
-    port: '3333'
+    host: "0.0.0.0",
+    port: process.env.PORT ?? '3333'
 })
