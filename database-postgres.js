@@ -2,7 +2,7 @@ import { randomUUID } from 'node:crypto';
 import { sql } from './db.js';
 
 export class DatabasePostgres {
-    list(search){
+    list(search = ''){
         return sql`SELECT * FROM videos WHERE title ilike ${'%' + search + '%'};`;
     }
 
